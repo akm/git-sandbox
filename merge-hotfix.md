@@ -33,3 +33,20 @@ backport-hotfix | hotfixブランチの変更をdevelopに反映するための�
 merge-hotfix1/ | backport-productionを使う場合
 merge-hotfix2/ | backport-hotfixを使う場合
 merge-hotfix3/ | 同じ修正を異なるブランチで行う場合
+
+## backport-productionを使う場合
+
+リリースされている製品のコードをdevelopに反映するのは最も間違いが少なく、最も単純だと思われます。
+ただしproductionブランチにdevelopに反映してはいけないコードが含まれている場合は、この方針を採用することはできません。
+その場合、本番固有のコードを含まないよう、環境変数や設定ファイルを使って本番固有のデータをコードの外に追い出すべきでしょう。
+
+## backport-hotfixを使う場合
+
+backport-productionが使えない場合は、この方針を取るべきです。
+特にhotfixはすぐに作らなければならないものの、何らかの理由でproductionにすぐにマージできない場合で、かつhotfixをdevelopに反映する必要がある場合、にはbackport-productiong使える場合でもこの方針を取るべきでしょう。
+
+
+## 同じ修正を異なるブランチで行う場合
+
+この方針はあまりおすすめできない方法です。理由は、本当に同じ変更なのかどうかを確認することが難しくなることが予想されるためです。
+この方針を採用する場合は、上記の２つの方針がどちらも採用できない場合のみです。
